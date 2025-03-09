@@ -1,0 +1,428 @@
+\documentclass[12pt]{article}
+
+\usepackage{lmodern} % Better font scaling
+\usepackage{anyfontsize} % Allows arbitrary font sizes
+\usepackage{amsmath}  % For mathematical equations
+\usepackage{graphicx} % For including images
+\usepackage{cite}     % For citations
+\usepackage{geometry} % Page margins and layout
+\usepackage{fancyhdr} % For custom headers
+\usepackage{hyperref} % For hyperlinks and clickable references
+\usepackage{enumitem}  % For custom list formatting
+\usepackage{gensymb}
+
+% Page Layout
+\geometry{a4paper, margin=2.5cm}
+
+% Change body font size to 13pt
+\fontsize{13}{15}\selectfont
+
+% Header and footer
+\pagestyle{fancy}
+\fancyhf{} % Clear all header and footer fields
+\fancyhead[R]{Page \thepage} % Page number in the right header
+\fancyfoot{} % Remove page number from footer
+
+% Custom lowercase Roman numeral format with brackets
+\renewcommand{\labelenumi}{(\roman{enumi})}
+\renewcommand{\thesection}{}
+
+\begin{document}
+\begin{center}
+    {\LARGE \textbf{Physics I Formulas}} \\  % Large bold title
+\end{center}
+
+\section{Chapter 1: Simple Harmonic Motion}
+%\subsection{Gas Constant}
+\begin{enumerate}[label=\roman*.]
+	\item Velocity,
+		\[
+		v = \frac{y}{t}
+		\]
+		Where,
+		\[
+		\begin{aligned}
+			v &= \text{velocity (m/s)} \\
+			y &= \text{displacement (m)} \\
+			t &= \text{time (sec)}
+		\end{aligned}
+		\]
+
+	\item Acceleration,
+		\[
+		a = \frac{v}{t}
+		\]
+		Where,
+		\[
+		\begin{aligned}
+			a &= \text{acceleration } (\text{m/s}^2) \\
+			v &= \text{velocity (m/s)} \\
+			t &= \text{time (sec)}
+		\end{aligned}
+		\]
+
+
+	\item Work,
+		\[
+			W = Fh = mgh
+		\]
+		Where,
+		\begin{align*}
+			m &= \text{mass (kg)} \\
+			h &= \text{height (m)}
+		\end{align*}
+
+	\item Density,
+		\[
+			\rho = \frac{m}{V}
+		\]
+		Where,
+		\begin{align*}
+			\rho &= \text{density } (\text{kg/m}^3) \\
+			m &= \text{mass (kg)} \\
+			V &= \text{volume (m)}
+		\end{align*}
+
+	\item Time Period,
+		\[
+			T = \frac{t}{N}
+		\]
+		Where,
+		\begin{align*}
+			T &= \text{time period (s)} \\
+			s &= \text{time (s)} \\
+			N &= \text{number of oscillations}
+		\end{align*}
+
+	\item Momentum,
+		\[
+			p = mv
+		\]
+		Where,
+		\begin{align*}
+			m &= \text{mass (kg)} \\
+			v &= \text{velocity (m/s)}
+		\end{align*}
+
+	\item Simple Harmonic Motion (SHM),
+		\[
+			y = A \sin (\omega t + \phi)
+		\]
+		Where,
+		\begin{align*}
+			y &= \text{displacement from the equilibrium position} \\
+			A &= \text{amplitude} \\
+			\omega &= \text{angular frequency} \\
+			t &= \text{time}
+		\end{align*}
+
+	\item Force:
+		\[
+			F = ma
+		\]
+		Where,
+		\begin{align*}
+			m &= \text{mass (kg)} \\
+			a &= \text{acceleration } (\text{m/s}^2)
+		\end{align*}
+
+	\item Velocity in SHM:
+		\[
+			v = \frac{dy}{dt} = - A \omega \sin(\omega t + \phi), \quad \text{if displacement is } y = A \cos(\omega t + \phi)
+		\]
+		\[
+			v = \frac{dy}{dt} = A \omega \cos(\omega t + \phi), \quad \text{if displacement is } y = A \sin(\omega t + \phi)
+		\]
+
+\end{enumerate}
+
+\section{Chapter 15: Calorimetry}
+%\subsection{Newton's law of cooling}
+%\begin{enumerate}[label=\roman*.]
+%	\item Rate of loss of heat,
+%		$$ - \frac{dQ}{dt} = A \cdot E \cdot f (\theta - \theta_{0}) $$
+%		Where,
+%		\begin{align*}
+%			A &= \text{area of the exposed surface} \\
+%			E &= \text{emissive power of the surface}
+%		\end{align*}
+%\end{enumerate}
+
+%\subsection{Gas Constant}
+\begin{enumerate}[label=\roman*.]
+	\item
+		\[
+		\begin{aligned}
+			& PV = rT \\
+			 \text{or,} & \ r = \frac{PV}{T} \\
+		\end{aligned}
+		\]
+		Where,
+		\begin{align*}
+			r &= \text{specific gas constant} \\
+			P &= \text{pressure} \\
+			V &= \text{volume} \\
+			T &= \text{temperature}
+		\end{align*}
+
+	\item
+		\[
+		\begin{aligned}
+			& PV = mrT \\
+			\text{or,} \ & P = \frac{m}{V} \ rT = \rho rT \\
+			\text{or,} \ & r = \frac{P}{\rho T}
+		\end{aligned}
+		\]
+		Where,
+		\begin{align*}
+			m &= \text{mass} \\
+			r &= \text{gas constant}
+		\end{align*}
+
+	\item Quantity of heat $Q$ supplied to the gas is,
+		\begin{align*}
+			Q &= m c_{v} \cdot (T_{2} - T_{1})\\
+			  &= m c_{v} \cdot dT
+		\end{align*}
+		Where,
+		\begin{align*}
+			m &= \text{mass} \\
+			c_{v} &= \text{specific heat (at constant volume)} \\
+			T_{2} - T_{1} &= \text{rise in temperature}
+		\end{align*}
+
+	\item Relation between two specific heats,
+		\[
+		\begin{aligned}
+			\frac{c_p}{c_v} = \gamma
+		\end{aligned}
+		\]
+		Where,
+		\begin{align*}
+			c_p &= \text{specific heat capacity at constant pressure} \\
+			c_v &= \text{specific heat capacity at constant volume} \\
+			\gamma &= \text{gamma constant}
+		\end{align*}
+
+	\item
+		\[
+		\begin{aligned}
+			c_p - c_v = \frac{r}{J} \ cal
+		\end{aligned}
+		\]
+		Where,
+		\begin{align*}
+			c_p &= \text{specific heat capacity at constant pressure} \\
+			c_v &= \text{specific heat capacity at constant volume} \\
+			r &= \text{specific gas constant} \\
+			J &= \text{mechanical equivalent of heat}
+		\end{align*}
+
+	\item Relation between pressure and volume after an adiabatic change,
+		$$ P_1 V_1^\gamma = P_2 V_2^\gamma = constant $$ \\
+		$P_1$, $V_1$ be pressure and volume and $P_2$, $V_2$ after an
+			adiabatic change.
+
+	\item Relation between volume and temperature in an adiabatic change,
+		$$ T_1 V_1^{\gamma - 1} = T_2 V_2^{\gamma - 1} = constant $$
+	\item Relation between pressure and temperature in an adiabatic change,
+		\begin{align*}
+			& T_1 P_1^\frac{1 - \gamma}{\gamma} = T_2 P_2^\frac{1 - \gamma}{\gamma} = constant \\
+			\text{or,} \ & T_1^\gamma P_1^{1 - \gamma} = T_2^\gamma P_2^{1 - \gamma} = constant
+		\end{align*}
+\end{enumerate}
+
+\section{Chapter 16: Kinetic Theory of Gases}
+%\subsection{Expression for pressure exerted by a gas}
+\begin{enumerate}[label=\roman*.]
+	\item
+		For ideal gas,
+		\[
+		\begin{aligned}
+			PV = nRT
+		\end{aligned}
+		\]
+		Where,
+		\begin{align*}
+			P &= \text{pressure} \\
+			n &= \text{mole} \\
+			T &= \text{temperature}
+		\end{align*}
+
+	\item
+		r.m.s. velocity,
+		\[
+		\begin{aligned}
+			c = \sqrt{\frac{3P}{\rho}} = \sqrt{\frac{3RT}{m}}
+		\end{aligned}
+		\]
+		Where,
+		\begin{align*}
+			P &= \text{atmospheric pressure} \\
+			\rho &= \text{density} \\
+			R &= \text{universal gas constant} \\
+			T &= \text{temperature} \\
+			m &= \text{mass of a single molecule}
+		\end{align*}
+
+	\item
+		relation between $c$ and $T$,
+		\[
+		\begin{aligned}
+			& c \propto \sqrt{T} \\
+			or, \ & \frac{c_1}{c_2} = \sqrt{\frac{T_1}{T_2}}
+		\end{aligned}
+		\]
+		Where,
+		\begin{align*}
+			c_1 &= \text{initial state of}\ c \\
+			c_2 &= \text{final state of}\ c \\
+			T_1 &= \text{initial temperature} \\
+			T_2 &= \text{final temperature}
+		\end{align*}
+
+	\item
+		Kinetic Energy per particle,
+		\[
+		\begin{aligned}
+			K.E. \rightarrow \frac{1}{2} mc^2 = \frac{3}{2}RT
+		\end{aligned}
+		\]
+		Where,
+		\begin{align*}
+			m &= \text{mass of a single gas molecule} \\
+			R &= \text{ideal gas constant} = 8.314 \ \text{J/mol} \cdot \text{K} \\
+			T &= \text{absolute temperature of gas in Kelvin (K)}
+		\end{align*}
+
+	\item
+		Average Kinetic Energy per particle,
+		\[
+		\begin{aligned}
+			A.K.E. \rightarrow \frac{1}{2} mc^2 = \frac{3}{2}KT = \frac{3}{2}\frac{R}{N}T
+		\end{aligned}
+		\]
+		Where,
+		\begin{align*}
+			m &= \text{mass of a single gas molecule} \\
+			R &= \text{ideal gas constant} = 8.314 \ \text{J/mol} \cdot \text{K} \\
+			N &= \text{number of particles (atoms or molecules) in a mole of gas} \\
+			T &= \text{absolute temperature of gas in Kelvin (K)}
+		\end{align*}
+
+	\item
+		Molecular Kinetic Energy per particle,
+		\[
+		\begin{aligned}
+			M.K.E. \rightarrow \frac{1}{2} mc^2 = \frac{3}{2}KT = \frac{3}{2}\frac{R}{M}T
+		\end{aligned}
+		\]
+		Where,
+		\begin{align*}
+			m &= \text{mass of a single gas molecule} \\
+			R &= \text{ideal gas constant} = 8.314 \ \text{J/mol} \cdot \text{K} \\
+			M &= \text{molar mass of the gas in kilograms per mole (kg/mol)} \\
+			T &= \text{absolute temperature of gas in Kelvin (K)}
+		\end{align*}
+\end{enumerate}
+
+\section{Chapter 20: Thermodynamics}
+
+\begin{enumerate}[label=\roman*.]
+    \item Comparison of temperature readings from various thermometers,
+    \[
+    \frac{C}{5} = \frac{F - 32}{9} = \frac{K - 273}{5}
+    \]
+    Where,
+    \begin{align*}
+        C &= \text{temperature in } ^{\circ} \text{Celsius} \\
+        F &= \text{temperature in } ^{\circ} \text{Fahrenheit} \\
+        K &= \text{temperature in Kelvin}
+    \end{align*}
+
+	\item Amount of work done,
+		$$ W = JH = J \ (Q_{1} - Q_{2})$$
+		Where,
+		\begin{align*}
+			W  &= \text{work done} \\[10pt]
+			J  &= \text{mechanical equivalent of heat} \\
+			   &= 4.186 \ \text{joules/cal} \\
+			   &= 4.186 \times 10^7 \ \text{ergs/cal} \\
+			   &= 4186 \ \text{joules/kcal} \\[10pt]
+			H  &= \text{amount of heat transferred} \\[10pt]
+			Q_{1} &= \text{heat absorbed from the hot reservoir} \\
+			Q_{2} &= \text{heat rejected to the cold reservoir}
+		\end{align*}
+
+	\item Amount of heat supplied to a system,
+		$$ dQ = dU + \frac{dW}{J} $$
+		Where,
+		\begin{align*}
+			dQ &= \text{heat supplied} \\
+			dU &= \text{change in internal energy} \\
+			\frac{dW}{J} &= \text{heat equivalent of the work done}
+		\end{align*}
+
+%\subsection{Work and the PV (indicator) diagram for a gas}
+%\begin{enumerate}[label=\roman*.]
+%	\item Total work done by gas during its passage from A to B,
+%		$$ W_{AB} = \int_{V_{1}}^{V_{2}} P \cdot dV = P (V_{2} - V_{1})$$
+%		Where,
+%		\begin{align*}
+%			A &= \text{initial state of the gas before the expansion takes place} \\
+%			B &= \text{final state of the gas after the expansion takes place} \\
+%		\end{align*}
+%\end{enumerate}
+
+	\item Efficiency,
+		$$ \eta = \frac{W}{Q} $$
+		Where,
+		\begin{align*}
+			W &= \text{amount of work} \\
+			Q &= \text{amount of heat}
+		\end{align*}
+
+	\item When $W$ in joules and $Q$ in calories,
+		$$ \eta = \frac{W}{JQ} $$
+		Where,
+		\begin{align*}
+			J  &= \text{mechanical equivalent of heat} \\
+			   &= 4.186 \ \text{joules/cal} \\
+			   &= 4.186 \times 10^7 \ \text{ergs/cal} \\
+			   &= 4186 \ \text{joules/kcal}
+		\end{align*}
+
+	$ \eta = \frac{W}{Q} $ \rightarrow \ When $W$ and $Q$ both are in the same
+		unit (both in joules or both in calories). \\
+	$ \eta = \frac{W}{JQ} $ \rightarrow \ When $W$ is in \textbf{joules}, but
+		$Q$ is in \textbf{calories}.
+
+	\item Also in relation to heat and temperature,
+		$$ \eta = 1 - \frac{Q_{2}}{Q_{1}} = 1 - \frac{T_{2}}{T_{1}} $$
+		Where,
+		\begin{align*}
+			Q_{1} &= \text{heat absorbed from the hot reservoir} \\
+			Q_{2} &= \text{heat rejected to the cold reservoir} \\
+			T_{1} &= \text{absolute temperature of the hot reservoir (in Kelvin)} \\
+			T_{2} &= \text{absolute temperature of the cold reservoir (in Kelvin)}
+		\end{align*}
+		The \textbf{hot} reservoir is the \textbf{source}, as it provides heat
+		to the engine. The \textbf{cold} reservoir is the \textbf{sink}, as it
+		absorbs the heat that the engine rejects. \\
+		So, the temperature of \textbf{source} shall always be \textbf{higher}
+		than the temperature of \textbf{sink}.
+
+	\item So, the relation between absolute temperature and heat,
+		$$ \frac{Q_{1}}{Q_{2}} = \frac{T_{1}}{T_{2}} $$
+
+	\item Coefficient of performance,
+		$$ E = \frac{Q_2}{W} = \frac{Q_2}{Q_1 - Q_2} $$
+		Where,
+		\begin{align*}
+			W &= \text{amount of work} \\
+			Q_{1} &= \text{heat absorbed from the hot reservoir} \\
+			Q_{2} &= \text{heat rejected to the cold reservoir}
+		\end{align*}
+\end{enumerate}
+
+\end{document}
