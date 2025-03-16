@@ -1,6 +1,6 @@
 # University Class Notes
 
-This repository contains my class notes, assignments, and lab reports for the courses I'm taking. The files are in **LaTeX** and **RMarkdown**.
+This repository contains my class notes, assignments, and lab reports for the courses I'm taking. Everything is Open Source. ;) The files are in **LaTeX** and **RMarkdown**.
 
 ## Semester 1 Courses
 
