@@ -1,8 +1,3 @@
----
-title: "University Class Notes"
-output: github_document
----
-
 # University Class Notes
 
 This repository contains my class notes, assignments, and lab reports for the courses I'm taking. The files are in **LaTeX** and **RMarkdown**.
