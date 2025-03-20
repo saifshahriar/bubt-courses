@@ -1,0 +1,647 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={CSE 101: Structured Programming Language},
+  pdfauthor={Saif Shahriar},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\input{header.tex}
+
+\title{CSE 101: Structured Programming Language}
+\author{Saif Shahriar}
+\date{2025-02-15}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\hypertarget{preface}{%
+\section{Preface}\label{preface}}
+
+C is a general-purpose, procedural programming language that has had a
+significant influence on modern programming languages. Developed in the
+early \textbf{1970s by Dennis Ritchie at Bell Labs}, C was designed to
+be simple, efficient, and flexible, making it ideal for system
+programming, including operating system development.
+
+Key features of C include:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Efficiency:} C allows direct manipulation of hardware
+  resources and memory, making it a powerful tool for
+  performance-critical applications.
+\item
+  \textbf{Portability:} Code written in C can run on different machines
+  with little to no changes, contributing to its widespread adoption.
+\item
+  \textbf{Structured Programming:} C emphasizes structured programming
+  techniques, making code more understandable and maintainable.
+\item
+  \textbf{Standard Library:} The C Standard Library provides essential
+  functions for tasks such as input/output (I/O), string manipulation,
+  and memory allocation. Overall, C forms the foundation for many modern
+  programming languages and is still widely used for system-level
+  programming, embedded systems, and developing software that requires
+  high performance.
+\end{enumerate}
+
+\hypertarget{components-of-a-c-program-your-first-c-program}{%
+\section{Components of a C Program (Your First C
+Program)}\label{components-of-a-c-program-your-first-c-program}}
+
+Basic structure of a C program:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}stdio.h\textgreater{}}
+
+\DataTypeTok{int}\NormalTok{ main() \{}
+\NormalTok{    printf(}\StringTok{"Hello World!}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{);}
+    \ControlFlowTok{return} \DecValTok{0}\NormalTok{;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Output:
+
+\begin{verbatim}
+## Hello World!
+\end{verbatim}
+
+\hypertarget{header-files}{%
+\subsection{Header Files}\label{header-files}}
+
+C is very modular. For example, the
+\texttt{\#include\ \textless{}stdio.h\textgreater{}} directive tells the
+compiler to include the contents of the \texttt{stdio.h} file in the
+program. These \texttt{*.h} files are known as \textbf{header files}.
+This file contains declarations for the standard input/output library
+functions, such as \texttt{printf} and \texttt{scanf}. Here,
+\texttt{\#include} just links the header file to the program.
+
+\hypertarget{main-function}{%
+\subsection{Main Function}\label{main-function}}
+
+The \texttt{main()} function is the entry point of a C program. It is
+mandatory to have a \texttt{main()} function in every C program. Any
+other \protect\hyperlink{functions}{functions} can be.
+
+\hypertarget{printf-function}{%
+\subsection{\texorpdfstring{\texttt{printf()}
+Function}{printf() Function}}\label{printf-function}}
+
+Prints the output to the console.
+
+\hypertarget{return-statement}{%
+\subsection{Return Statement}\label{return-statement}}
+
+\texttt{return\ 0;} is used to return a value from the \texttt{main()}
+function. The value \texttt{0} represents the successful execution of
+the program. Any other value indicates an error.
+
+\hypertarget{c-tokenization}{%
+\section{C Tokenization}\label{c-tokenization}}
+
+There 5 types of tokens in C programming language.\footnote{Most places
+  mentions 6 types of tokens. According to codeforwin, it it 5.}
+
+\hypertarget{keywords}{%
+\subsection{Keywords}\label{keywords}}
+
+Reserved keywords C programming language. A total of 32 keywords in C as
+per ANSI standards.
+
+\begin{multicols}{4}
+\begin{enumerate}
+\item auto
+\item break
+\item case
+\item char
+\item const
+\item continue
+\item default
+\item do
+\item double
+\item else
+\item enum
+\item extern
+\item float
+\item for
+\item goto
+\item if
+\item int
+\item long
+\item register
+\item return
+\item short
+\item signed
+\item sizeof
+\item static
+\item struct
+\item switch
+\item typedef
+\item union
+\item unsigned
+\item void
+\item volatile
+\item while
+\end{enumerate}
+\end{multicols}
+
+\hypertarget{identifiers}{%
+\subsection{Identifiers}\label{identifiers}}
+
+Identifiers are the names used for things in programming, like
+variables, functions, and custom types.
+
+Rules for naming an identifier:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Cannot be a \protect\hyperlink{keywords}{reserved keyword}.
+\item
+  Must begin with an alphabet \texttt{a-z}, \texttt{A-Z} or underscore
+  \texttt{\_} symbol.
+\item
+  Can contain digits \texttt{0-9} but not at the beginning.
+\item
+  Must not contain any special character except underscore \texttt{\_}.
+\item
+  No white spaces are allowed in identifiers.
+\item
+  Identifiers are case-sensitive. So, \texttt{sum} and \texttt{SUM} are
+  different.
+\item
+  There is no limit on the length of an identifier.
+\end{enumerate}
+
+Example:
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.53\columnwidth}\raggedright
+Valied Identifiers\strut
+\end{minipage} & \begin{minipage}[b]{0.41\columnwidth}\raggedright
+Invalid Identifiers\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.53\columnwidth}\raggedright
+\texttt{name}, \texttt{\_name}, \texttt{name123}, \texttt{name\_123},
+\texttt{\_name123}, \texttt{NAME}\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright
+\texttt{name\ 123}, \texttt{123name}, \texttt{name@123},
+\texttt{name-123}\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{operators}{%
+\subsection{Operators}\label{operators}}
+
+\hypertarget{arithmetic-operators}{%
+\subsubsection{Arithmetic Operators}\label{arithmetic-operators}}
+
+Perform arithmetic operations like addition, subtraction,
+multiplication, etc.
+
+Example: \texttt{+}, \texttt{-}, \texttt{*}, \texttt{/}, \texttt{\%}.
+
+Usage:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}stdio.h\textgreater{}}
+
+\DataTypeTok{int}\NormalTok{ main() \{}
+    \DataTypeTok{int}\NormalTok{ a = }\DecValTok{10}\NormalTok{, b = }\DecValTok{20}\NormalTok{;}
+\NormalTok{    printf(}\StringTok{"a + b = \%d}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, a + b);}
+    \ControlFlowTok{return} \DecValTok{0}\NormalTok{;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Output:
+
+\begin{verbatim}
+## a + b = 30
+\end{verbatim}
+
+\hypertarget{assignment-operators}{%
+\subsubsection{Assignment Operators}\label{assignment-operators}}
+
+Assign values to variables.
+
+Example: \texttt{=}, \texttt{+=}, \texttt{-=}, \texttt{*=}, \texttt{/=},
+\texttt{\%=}, \texttt{\textless{}\textless{}=},
+\texttt{\textgreater{}\textgreater{}=}, \texttt{\&=}, \texttt{\^{}=},
+\texttt{\textbar{}=}.
+
+Usage::
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}stdio.h\textgreater{}}
+
+\DataTypeTok{int}\NormalTok{ main() \{}
+    \DataTypeTok{int}\NormalTok{ a = }\DecValTok{10}\NormalTok{, b = }\DecValTok{20}\NormalTok{;}
+\NormalTok{    a += b;    }\CommentTok{// adds b to a and assigns the result to a}
+\NormalTok{    printf(}\StringTok{"a = \%d}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, a);}
+    \ControlFlowTok{return} \DecValTok{0}\NormalTok{;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Output:
+
+\begin{verbatim}
+## a = 30
+\end{verbatim}
+
+\hypertarget{relational-operators}{%
+\subsubsection{Relational Operators}\label{relational-operators}}
+
+Relational Operators are used to compare two values.
+
+Example: \texttt{==}, \texttt{!=}, \texttt{\textgreater{}},
+\texttt{\textless{}}, \texttt{\textgreater{}=}, \texttt{\textless{}=}.
+
+Usage:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}stdio.h\textgreater{}}
+
+\DataTypeTok{int}\NormalTok{ main() \{}
+    \DataTypeTok{int}\NormalTok{ a = }\DecValTok{10}\NormalTok{, b = }\DecValTok{20}\NormalTok{;}
+    \ControlFlowTok{if}\NormalTok{ (a \textgreater{} b)}
+\NormalTok{        printf(}\StringTok{"a is greater than b}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{);}
+    \ControlFlowTok{else}
+\NormalTok{        printf(}\StringTok{"b is greater than a}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{);}
+    \ControlFlowTok{return} \DecValTok{0}\NormalTok{;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Output:
+
+\begin{verbatim}
+## b is greater than a
+\end{verbatim}
+
+\hypertarget{logical-operators}{%
+\subsubsection{Logical Operators}\label{logical-operators}}
+
+Operators that perform logical operations.
+
+Example: \texttt{\&\&}, \texttt{\textbar{}\textbar{}}, \texttt{!}.
+
+Usage:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}stdio.h\textgreater{}}
+
+\DataTypeTok{int}\NormalTok{ main() \{}
+    \DataTypeTok{int}\NormalTok{ a = }\DecValTok{10}\NormalTok{, b = }\DecValTok{20}\NormalTok{;}
+    \ControlFlowTok{if}\NormalTok{ (a \textgreater{} }\DecValTok{0}\NormalTok{ \&\& b \textgreater{} }\DecValTok{0}\NormalTok{)}
+\NormalTok{        printf(}\StringTok{"Both a and b are positive}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{);}
+    \ControlFlowTok{return} \DecValTok{0}\NormalTok{;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Output:
+
+\begin{verbatim}
+## Both a and b are positive
+\end{verbatim}
+
+\hypertarget{bitwise-operators}{%
+\subsubsection{Bitwise Operators}\label{bitwise-operators}}
+
+Direct manipulation of bits.
+
+Example: \texttt{\&}, \texttt{\textbar{}}, \texttt{\^{}},
+\texttt{\textasciitilde{}}, \texttt{\textless{}\textless{}},
+\texttt{\textgreater{}\textgreater{}}.
+
+Usage:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}stdio.h\textgreater{}}
+
+\DataTypeTok{int}\NormalTok{ main() \{}
+    \DataTypeTok{int}\NormalTok{ a = }\DecValTok{10}\NormalTok{, b = }\DecValTok{20}\NormalTok{;}
+\NormalTok{    printf(}\StringTok{"a \& b = \%d}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, a \& b);}
+    \ControlFlowTok{return} \DecValTok{0}\NormalTok{;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Output:
+
+\begin{verbatim}
+## a & b = 0
+\end{verbatim}
+
+\hypertarget{incrementdecrement-operators}{%
+\subsubsection{Increment/Decrement
+Operators}\label{incrementdecrement-operators}}
+
+Increment or decrement the value of a variable.
+
+Example: \texttt{++}, \texttt{-\/-}.
+
+Usage:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}stdio.h\textgreater{}}
+
+\DataTypeTok{int}\NormalTok{ main() \{}
+    \DataTypeTok{int}\NormalTok{ a = }\DecValTok{10}\NormalTok{;}
+\NormalTok{    a++;}
+\NormalTok{    printf(}\StringTok{"a = \%d}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, a);}
+    \ControlFlowTok{return} \DecValTok{0}\NormalTok{;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Output:
+
+\begin{verbatim}
+## a = 11
+\end{verbatim}
+
+\hypertarget{conditional-ternary-operator}{%
+\subsubsection{Conditional (Ternary)
+Operator}\label{conditional-ternary-operator}}
+
+Operator that checks a condition and returns a value based on the
+condition. A simple if-else statement in a single line.
+
+Example: \texttt{condition\ ?\ value\_if\_true\ :\ value\_if\_false}.
+
+Usage:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}stdio.h\textgreater{}}
+
+\DataTypeTok{int}\NormalTok{ main() \{}
+    \DataTypeTok{int}\NormalTok{ a = }\DecValTok{10}\NormalTok{, b = }\DecValTok{20}\NormalTok{;}
+    \DataTypeTok{int}\NormalTok{ max = (a \textgreater{} b) ? a : b;}
+\NormalTok{    printf(}\StringTok{"Max = \%d}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, max);}
+    \ControlFlowTok{return} \DecValTok{0}\NormalTok{;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Output:
+
+\begin{verbatim}
+## Max = 20
+\end{verbatim}
+
+\hypertarget{other-operators}{%
+\subsubsection{Other operators}\label{other-operators}}
+
+And many more\ldots{}
+
+Example:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{sizeof} operator returns the size of a variable or data type
+  in bytes.
+\item
+  \texttt{\&} operator returns the address of a variable.
+\item
+  \texttt{*} operator is used to declare a pointer to a variable.
+\item
+  \texttt{-\textgreater{}}, \texttt{.} operators are used to access
+  structure members using a pointer.
+\end{itemize}
+
+Usage:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}stdio.h\textgreater{}}
+
+\KeywordTok{typedef} \KeywordTok{struct}\NormalTok{ \{}
+    \DataTypeTok{int}\NormalTok{ x;}
+    \DataTypeTok{int}\NormalTok{ y;}
+\NormalTok{\} Point;}
+
+\DataTypeTok{int}\NormalTok{ main() \{}
+    \DataTypeTok{int}\NormalTok{ a = }\DecValTok{10}\NormalTok{;}
+\NormalTok{    printf(}\StringTok{"Size of a int: \%d bytes}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, }\KeywordTok{sizeof}\NormalTok{ a);}
+\NormalTok{    printf(}\StringTok{"Address of a: \%p}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, \&a);}
+
+\NormalTok{    Point p = \{}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{\};}
+\NormalTok{    printf(}\StringTok{"p.x = \%d}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, p.x);}
+\NormalTok{    printf(}\StringTok{"p.y = \%d}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, p.y);}
+    \ControlFlowTok{return} \DecValTok{0}\NormalTok{;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Output:
+
+\begin{verbatim}
+## Size of a int: 4 bytes
+## Address of a: 0x7ffc0b090afc
+## p.x = 1
+## p.y = 2
+\end{verbatim}
+
+\hypertarget{seperator}{%
+\subsection{Seperator}\label{seperator}}
+
+Used to separate statements.
+
+Example: \texttt{} (space), \texttt{,} (comma), \texttt{;} (semicolon),
+\texttt{\textbackslash{}t} (tab).
+
+\hypertarget{literals}{%
+\subsection{Literals}\label{literals}}
+
+Constant values that are used within the program.
+
+Four types of literals:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Integer literals: \texttt{10}, \texttt{20}, \texttt{30}.
+\item
+  Floating-point or real literals: \texttt{3.14}, \texttt{2.718}.
+\item
+  Character literals: \texttt{\textquotesingle{}a\textquotesingle{}},
+  \texttt{\textquotesingle{}b\textquotesingle{}},
+  \texttt{\textquotesingle{}c\textquotesingle{}}.
+\item
+  String literals: \texttt{"Hello"}, \texttt{"World"},
+  \texttt{"I\ love\ programming!"}.
+\end{enumerate}
+
+\hypertarget{comments}{%
+\section{Comments}\label{comments}}
+
+Non-executable statements that are ignored by the compiler. 2 types of
+comments in C.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Single-line comments: \texttt{//\ This\ is\ a\ single-line\ comment}
+\item
+  Multi-line comments:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}stdio.h\textgreater{}}
+
+\DataTypeTok{int}\NormalTok{ main() \{}
+    \CommentTok{/*}
+\CommentTok{        This is a}
+\CommentTok{        multi{-}line comment}
+\CommentTok{        and would be ignored}
+\CommentTok{        by the compiler}
+\CommentTok{    */}
+\NormalTok{    printf(}\StringTok{"Hello World!}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{);}
+    \ControlFlowTok{return} \DecValTok{0}\NormalTok{;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Output:
+
+\begin{verbatim}
+## Hello World!
+\end{verbatim}
+
+\hypertarget{functions}{%
+\section{Functions}\label{functions}}
+
+Coming soon\ldots{}
+
+\end{document}

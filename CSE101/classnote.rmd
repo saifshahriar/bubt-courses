@@ -1,0 +1,410 @@
+---
+title: "CSE 101: Structured Programming Language"
+author: "Saif Shahriar"
+date: "2025-02-15"
+link-citations: true
+output:
+  bookdown::pdf_document2: default
+  pdf_document:
+    latex_engine: lualatex
+    keep_tex: true
+    number_sections: true
+    highlight: tango
+header-includes:
+  - \input{header.tex}
+---
+
+<!-- C codeblocks setup for Rmarkdown -->
+
+````{r setup, include=FALSE}
+knitr::knit_engines$set(c = function(options) {
+	code <- options$code
+	writeLines(code, "/tmp/tmpXRMDXTMP.c")
+	res <- system("tcc -run /tmp/tmpXRMDXTMP.c", intern = TRUE)
+	res <- paste("##", res)
+
+	# Create a code block for the C code
+	code_block <- paste("```c", paste(code, collapse = "\n"), "```", sep = "\n")
+
+	# Create a code block for the output
+	output_block <- paste("Output:\n```text", paste(res, collapse = "\n"), "```", sep = "\n")
+
+	# Combine both blocks
+	if (isTRUE(options$eval)) {
+		return(paste(code_block, "\n", output_block))
+	} else {
+		return(paste(code_block))
+	}
+})
+````
+
+<!--
+<!-- ```{r setup, include=FALSE}
+<!-- knitr::knit_engines$set(tcc = function(options) {
+<!-- 	code <- options$code
+<!-- 	writeLines(code, "/tmp/tmp.c")
+<!-- 	res <- system("tcc -run /tmp/tmp.c", intern = TRUE)
+<!-- 		# Format the code as a code block for the output
+<!-- 		code_block <- paste("```c", paste(code, collapse = "\n"), "```", sep = "\n")
+<!-- 		# Combine the code block with the execution result
+<!-- 		return(paste(code_block, "\n", paste(res, collapse = "\n")))
+<!-- })
+<!-- ```
+<!--
+<!-- ```{r setup, include=FALSE}
+<!-- knitr::knit_engines$set(tcc = function(options) {
+<!-- 	code <- options$code
+<!-- 	writeLines(code, "temp.c")
+<!-- 	system("tcc -run temp.c", intern = TRUE)
+<!-- })
+<!-- ``` -->
+
+\tableofcontents
+
+\newpage
+
+# Preface
+
+C is a general-purpose, procedural programming language that has had a
+significant influence on modern programming languages. Developed in the early
+**1970s by Dennis Ritchie at Bell Labs**, C was designed to be simple,
+efficient, and flexible, making it ideal for system programming, including
+operating system development.
+
+Key features of C include:
+
+1. **Efficiency:** C allows direct manipulation of hardware resources and
+   memory, making it a powerful tool for performance-critical applications.
+2. **Portability:** Code written in C can run on different machines with little
+   to no changes, contributing to its widespread adoption.
+3. **Structured Programming:** C emphasizes structured programming techniques,
+   making code more understandable and maintainable.
+4. **Standard Library:** The C Standard Library provides essential functions for
+   tasks such as input/output (I/O), string manipulation, and memory allocation.
+   Overall, C forms the foundation for many modern programming languages and is
+   still widely used for system-level programming, embedded systems, and
+   developing software that requires high performance.
+
+# Components of a C Program (Your First C Program)
+
+Basic structure of a C program:
+
+```{c, eval=TRUE}
+#include <stdio.h>
+
+int main() {
+	printf("Hello World!\n");
+	return 0;
+}
+```
+
+## Header Files
+
+C is very modular. For example, the `#include <stdio.h>` directive tells the
+compiler to include the contents of the `stdio.h` file in the program. These
+`*.h` files are known as **header files**. This file contains declarations for
+the standard input/output library functions, such as `printf` and `scanf`. Here,
+`#include` just links the header file to the program.
+
+## Main Function
+
+The `main()` function is the entry point of a C program. It is mandatory to have
+a `main()` function in every C program. Any other [functions](#functions) can
+be.
+
+## `printf()` Function
+
+Prints the output to the console.
+
+## Return Statement
+
+`return 0;` is used to return a value from the `main()` function. The value `0`
+represents the successful execution of the program. Any other value indicates an
+error.
+
+# C Tokenization
+
+There 5 types of tokens in C programming language.[^1]
+
+[^1]: Most places mentions 6 types of tokens. According to codeforwin, it it 5.
+
+## Keywords {#keywords}
+
+Reserved keywords C programming language. A total of 32 keywords in C as per
+ANSI standards.
+
+<!-- prettier-ignore-start -->
+\begin{multicols}{4}
+\begin{enumerate}
+\item auto
+\item break
+\item case
+\item char
+\item const
+\item continue
+\item default
+\item do
+\item double
+\item else
+\item enum
+\item extern
+\item float
+\item for
+\item goto
+\item if
+\item int
+\item long
+\item register
+\item return
+\item short
+\item signed
+\item sizeof
+\item static
+\item struct
+\item switch
+\item typedef
+\item union
+\item unsigned
+\item void
+\item volatile
+\item while
+\end{enumerate}
+\end{multicols}
+<!-- prettier-ignore-end -->
+
+## Identifiers
+
+Identifiers are the names used for things in programming, like variables,
+functions, and custom types.
+
+Rules for naming an identifier:
+
+1. Cannot be a [reserved keyword](#keywords).
+2. Must begin with an alphabet `a-z`, `A-Z` or underscore `_` symbol.
+3. Can contain digits `0-9` but not at the beginning.
+4. Must not contain any special character except underscore `_`.
+5. No white spaces are allowed in identifiers.
+6. Identifiers are case-sensitive. So, `sum` and `SUM` are different.
+7. There is no limit on the length of an identifier.
+
+Example:
+
+| Valied Identifiers                                         | Invalid Identifiers                           |
+| ---------------------------------------------------------- | --------------------------------------------- |
+| `name`, `_name`, `name123`, `name_123`, `_name123`, `NAME` | `name 123`, `123name`, `name@123`, `name-123` |
+
+<!-- TODO: Details of those operations -->
+
+## Operators
+
+### Arithmetic Operators
+
+Perform arithmetic operations like addition, subtraction, multiplication, etc.
+
+Example: `+`, `-`, `*`, `/`, `%`.
+
+Usage:
+
+```{c}
+#include <stdio.h>
+
+int main() {
+	int a = 10, b = 20;
+	printf("a + b = %d\n", a + b);
+	return 0;
+}
+```
+
+### Assignment Operators
+
+Assign values to variables.
+
+Example: `=`, `+=`, `-=`, `*=`, `/=`, `%=`, `<<=`, `>>=`, `&=`, `^=`, `|=`.
+
+Usage::
+
+```{c}
+#include <stdio.h>
+
+int main() {
+	int a = 10, b = 20;
+	a += b;    // adds b to a and assigns the result to a
+	printf("a = %d\n", a);
+	return 0;
+}
+```
+
+### Relational Operators
+
+Relational Operators are used to compare two values.
+
+Example: `==`, `!=`, `>`, `<`, `>=`, `<=`.
+
+Usage:
+
+```{c}
+#include <stdio.h>
+
+int main() {
+	int a = 10, b = 20;
+	if (a > b)
+		printf("a is greater than b\n");
+	else
+		printf("b is greater than a\n");
+	return 0;
+}
+```
+
+### Logical Operators
+
+Operators that perform logical operations.
+
+Example: `&&`, `||`, `!`.
+
+Usage:
+
+```{c}
+#include <stdio.h>
+
+int main() {
+	int a = 10, b = 20;
+	if (a > 0 && b > 0)
+		printf("Both a and b are positive\n");
+	return 0;
+}
+```
+
+### Bitwise Operators
+
+Direct manipulation of bits.
+
+Example: `&`, `|`, `^`, `~`, `<<`, `>>`.
+
+Usage:
+
+```{c}
+#include <stdio.h>
+
+int main() {
+	int a = 10, b = 20;
+	printf("a & b = %d\n", a & b);
+	return 0;
+}
+```
+
+### Increment/Decrement Operators
+
+Increment or decrement the value of a variable.
+
+Example: `++`, `--`.
+
+Usage:
+
+```{c}
+#include <stdio.h>
+
+int main() {
+	int a = 10;
+	a++;
+	printf("a = %d\n", a);
+	return 0;
+}
+```
+
+### Conditional (Ternary) Operator
+
+Operator that checks a condition and returns a value based on the condition. A
+simple if-else statement in a single line.
+
+Example: `condition ? value_if_true : value_if_false`.
+
+Usage:
+
+```{c}
+#include <stdio.h>
+
+int main() {
+	int a = 10, b = 20;
+	int max = (a > b) ? a : b;
+	printf("Max = %d\n", max);
+	return 0;
+}
+```
+
+### Other operators
+
+And many more...
+
+Example:
+
+- `sizeof` operator returns the size of a variable or data type in bytes.
+- `&` operator returns the address of a variable.
+- `*` operator is used to declare a pointer to a variable.
+- `->`, `.` operators are used to access structure members using a pointer.
+
+Usage:
+
+```{c}
+#include <stdio.h>
+
+typedef struct {
+	int x;
+	int y;
+} Point;
+
+int main() {
+	int a = 10;
+	printf("Size of a int: %d bytes\n", sizeof a);
+	printf("Address of a: %p\n", &a);
+
+	Point p = {1, 2};
+	printf("p.x = %d\n", p.x);
+	printf("p.y = %d\n", p.y);
+	return 0;
+}
+
+```
+
+## Seperator
+
+Used to separate statements.
+
+Example: ` ` (space), `,` (comma), `;` (semicolon), `\t` (tab).
+
+## Literals
+
+Constant values that are used within the program.
+
+Four types of literals:
+
+1. Integer literals: `10`, `20`, `30`.
+2. Floating-point or real literals: `3.14`, `2.718`.
+3. Character literals: `'a'`, `'b'`, `'c'`.
+4. String literals: `"Hello"`, `"World"`, `"I love programming!"`.
+
+# Comments
+
+Non-executable statements that are ignored by the compiler. 2 types of comments
+in C.
+
+1. Single-line comments: `// This is a single-line comment`
+2. Multi-line comments:
+
+```{c}
+#include <stdio.h>
+
+int main() {
+	/*
+		This is a
+		multi-line comment
+		and would be ignored
+		by the compiler
+	*/
+	printf("Hello World!\n");
+	return 0;
+}
+```
+
+# Functions {#functions}
+
+Coming soon...
