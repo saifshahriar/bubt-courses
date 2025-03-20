@@ -565,7 +565,7 @@ Output:
 
 \begin{verbatim}
 ## Size of a int: 4 bytes
-## Address of a: 0x7ffc0b090afc
+## Address of a: 0x7ffe53c31afc
 ## p.x = 1
 ## p.y = 2
 \end{verbatim}
@@ -638,6 +638,157 @@ Output:
 \begin{verbatim}
 ## Hello World!
 \end{verbatim}
+
+\hypertarget{variables-and-data-types}{%
+\section{Variables and Data Types}\label{variables-and-data-types}}
+
+Variables are used to store data in a program. Each variable has a
+specific datatype associated with it. Most common data types in C are:
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+\begin{minipage}[b]{0.14\columnwidth}\raggedright
+Type\strut
+\end{minipage} & \begin{minipage}[b]{0.13\columnwidth}\raggedright
+Format Specifier\strut
+\end{minipage} & \begin{minipage}[b]{0.19\columnwidth}\raggedright
+Size (bytes)\strut
+\end{minipage} & \begin{minipage}[b]{0.43\columnwidth}\raggedright
+Range\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.14\columnwidth}\raggedright
+\textbf{int}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+\texttt{\%d}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+4\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+\(-2^{31}\) to \(2^{31}-1\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedright
+\textbf{float}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+\texttt{\%f}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+4\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+\textasciitilde{} \(1.2 \times 10^{-38}\) to
+\(3.4 \times 10^{38}\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedright
+\textbf{double}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+\texttt{\%lf}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+8\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+\textasciitilde{} \(2.2 \times 10^{-308}\) to
+\(1.7 \times 10^{308}\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedright
+\textbf{char}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+\texttt{\%c}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+\(-2^{7}\) to \(2^{7}-1\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedright
+short\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+\texttt{\%hd}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+2\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+\(-2^{15}\) to \(2^{15}-1\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedright
+long\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+\texttt{\%ld}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+8\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+\(-2^{63}\) to \(2^{63}-1\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedright
+\textbf{long long}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+\texttt{\%lld}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+8\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+\(-2^{63}\) to \(2^{63}-1\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedright
+long double\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+\texttt{\%Lf}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+16 (Linux)\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+\textasciitilde{} \(3.4 \times 10^{-4932}\) to
+\(3.4 \times 10^{4932}\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedright
+unsigned short\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+\texttt{\%hu}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+2\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+0 to \(2^{16}-1\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedright
+unsigned int\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+\texttt{\%u}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+4\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+0 to \(2^{32}-1\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedright
+unsigned long\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+\texttt{\%lu}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+4 (32-bit) / 8 (64-bit)\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+0 to \(2^{32}-1\) (32-bit) / 0 to \(2^{64} - 1\) (64-bit)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedright
+unsigned long long\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+\texttt{\%llu}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+8\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+0 to \(2^{64}-1\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedright
+unsigned char\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+\texttt{\%c}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+0 to \(2^{8}-1\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedright
+\textbf{void}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+-\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+-\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+-\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
 
 \hypertarget{functions}{%
 \section{Functions}\label{functions}}

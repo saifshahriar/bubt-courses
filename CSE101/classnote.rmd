@@ -395,15 +395,53 @@ in C.
 
 int main() {
 	/*
-		This is a
-		multi-line comment
-		and would be ignored
-		by the compiler
+		This is amulti-line comment
+		and would be ignored by the compiler
 	*/
 	printf("Hello World!\n");
 	return 0;
 }
 ```
+
+# Variables and Data Types
+
+Variables are used to store data in a program. Each variable has a specific
+datatype associated with it. Most common data types in C are:
+
+| Type               | Format Specifier | Size (bytes)            | Range                                                 |
+| ------------------ | ---------------- | ----------------------- | ----------------------------------------------------- |
+| **int**            | `%d`             | 4                       | $-2^{31}$ to $2^{31}-1$                               |
+| **float**          | `%f`             | 4                       | ~ $1.2 \times 10^{-38}$ to $3.4 \times 10^{38}$       |
+| **double**         | `%lf`            | 8                       | ~ $2.2 \times 10^{-308}$ to $1.7 \times 10^{308}$     |
+| **char**           | `%c`             | 1                       | $-2^{7}$ to $2^{7}-1$                                 |
+| short              | `%hd`            | 2                       | $-2^{15}$ to $2^{15}-1$                               |
+| long               | `%ld`            | 8                       | $-2^{63}$ to $2^{63}-1$                               |
+| **long long**      | `%lld`           | 8                       | $-2^{63}$ to $2^{63}-1$                               |
+| long double        | `%Lf`            | 16 (Linux)              | ~ $3.4 \times 10^{-4932}$ to $3.4 \times 10^{4932}$   |
+| unsigned short     | `%hu`            | 2                       | 0 to $2^{16}-1$                                       |
+| unsigned int       | `%u`             | 4                       | 0 to $2^{32}-1$                                       |
+| unsigned long      | `%lu`            | 4 (32-bit) / 8 (64-bit) | 0 to $2^{32}-1$ (32-bit) / 0 to $2^{64} - 1$ (64-bit) |
+| unsigned long long | `%llu`           | 8                       | 0 to $2^{64}-1$                                       |
+| unsigned char      | `%c`             | 1                       | 0 to $2^{8}-1$                                        |
+| **void**           | -                | -                       | -                                                     |
+
+<!-- # User Input -->
+<!---->
+<!-- `scanf` function is used to take input from the user. -->
+<!---->
+<!-- Exmaple: -->
+<!---->
+<!-- ```{c} -->
+<!-- #include <stdio.h> -->
+<!---->
+<!-- int main() { -->
+<!-- 	int num; -->
+<!-- 	printf("Enter a number: "); -->
+<!-- 	scanf("%d", &num); -->
+<!-- 	printf("You entered: %d\n", num); -->
+<!-- 	return 0; -->
+<!-- } -->
+<!-- ``` -->
 
 # Functions {#functions}
 

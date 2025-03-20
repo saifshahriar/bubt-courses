@@ -5,7 +5,7 @@ LATEX=lualatex
 LATEXFLAGS=-interaction=nonstopmode -shell-escape
 
 # Automatically find all .tex and .rmd files
-TEX_SRCS := $(wildcard *.tex)
+TEX_SRCS := $(filter-out header.tex, $(wildcard *.tex))
 TEX_PDFS := $(TEX_SRCS:.tex=.pdf)
 RMD_SRCS := $(wildcard *.rmd)
 RMD_PDFS := $(RMD_SRCS:.rmd=.pdf)
